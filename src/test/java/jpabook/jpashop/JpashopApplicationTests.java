@@ -8,6 +8,10 @@ class JpashopApplicationTests {
 
 	@Test
 	void contextLoads() {
+
+
 	}
+
+
 
 }
