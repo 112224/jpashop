@@ -64,17 +64,17 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemId}/edit")
-    public String updateItemForm(@PathVariable String itemId, @ModelAttribute("form") BookForm form) {
-        Book book = Book.createBook(
-                form.getId(),
-                form.getName(),
-                form.getPrice(),
-                form.getStockQuantity(),
-                form.getAuthor(),
-                form.getIsbn()
-        );
+    public String updateItemForm(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
+//        Book book = Book.createBook(
+////                form.getId(),       //준영속 엔티티 -> DB 식별자는 있지만, JPA의 관리 대상은 아님
+//                form.getName(),
+//                form.getPrice(),
+//                form.getStockQuantity(),
+//                form.getAuthor(),
+//                form.getIsbn()
+//        );
 
-        itemService.saveItem(book);
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
     }
