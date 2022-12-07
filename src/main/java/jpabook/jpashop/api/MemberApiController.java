@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -43,6 +45,25 @@ public class MemberApiController {
         return new UpdateMemberResponse(findMember.getId(), findMember.getName());
     }
 
+    // Entity 에 화면을 위한 로직이 추가되어야 함(order 가 나가지 않도록)
+    // 스펙 확장에도 닫혀있는 구조
+    // Entity의 변경이 API spec 을 변경시킴 -> entity의 직접노출 절대 지양
+    @GetMapping("/api/v1/members")
+    public List<Member> memberV1() {
+        return memberService.findMembers();
+    }
+
+    // 중간 단계의 DTO 를 만들어 위의 문제점 해결
+    @GetMapping("/api/v2/members")
+    public ResultMember memberV2() {
+        List<Member> members = memberService.findMembers();
+        List<MemberDto> collect = members.stream()
+                .map(m -> new MemberDto(m.getName()))
+                .collect(Collectors.toList());
+
+        return new ResultMember<>(collect.size(), collect);
+    }
+
     // ==DTO==
     // inner class 로 DTO를 만들어줄 시 응집성이 좋아지고 유지보수성이 좋아짐.
     // 전체적으로 사용하는 것이라면 별도의 DTO package 로 분리해야 하겠지만 그게 아니라면 inner 로 가져가자.
@@ -72,4 +93,18 @@ public class MemberApiController {
     static class UpdateMemberRequest {
         private String name;
     }
+
+    @Data
+    @AllArgsConstructor
+    static class ResultMember<T> {
+        private int count;
+        private T data;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class MemberDto {
+        private String name;
+    }
+
 }
