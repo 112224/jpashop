@@ -1,8 +1,12 @@
 package jpabook.jpashop.api;
 
-import jpabook.jpashop.domain.*;
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
+import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
+import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryRepositoy;
 import jpabook.jpashop.service.OrderService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +23,7 @@ public class OrderSimpleApiController {
 
     private final OrderService orderService;
     private final OrderRepository orderRepository;
+    private final OrderSimpleQueryRepositoy orderSimpleQueryRepositoy;
 
     /**
      * xTo One 관계에 대한 성능 최적화
@@ -56,6 +61,11 @@ public class OrderSimpleApiController {
 
         return result;
 
+    }
+
+    @GetMapping("/api/v4/simple-orders")
+    public List<OrderSimpleQueryDto> orderV4() {
+        return orderSimpleQueryRepositoy.findOrderDtos();
     }
 
     @Data
