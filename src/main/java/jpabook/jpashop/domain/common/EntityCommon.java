@@ -9,4 +9,5 @@ public abstract class EntityCommon {
     private LocalDateTime createdTime;
     private String lastModifiedBy;
     private LocalDateTime lastModifiedTime;
+
 }

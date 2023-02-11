@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.domain.common.EntityCommon;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @Setter
-public class Category {
+public class Category extends EntityCommon {
     @Id
     @GeneratedValue
     @Column(name = "category_id")

@@ -1,6 +1,7 @@
 package jpabook.jpashop.domain.delivery;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jpabook.jpashop.domain.common.EntityCommon;
 import jpabook.jpashop.domain.member.Address;
 import jpabook.jpashop.domain.order.Order;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @Setter
-public class Delivery {
+public class Delivery extends EntityCommon {
 
     @Id
     @GeneratedValue

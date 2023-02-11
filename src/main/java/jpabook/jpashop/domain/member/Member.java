@@ -1,6 +1,7 @@
 package jpabook.jpashop.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jpabook.jpashop.domain.common.EntityCommon;
 import jpabook.jpashop.domain.order.Order;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +12,8 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-@
-public class Member {
+
+public class Member extends EntityCommon {
 
     @Id
     @GeneratedValue

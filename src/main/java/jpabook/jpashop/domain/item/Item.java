@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.domain.common.EntityCommon;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.util.List;
 @DiscriminatorColumn
 @Getter
 @Setter
-public abstract class Item {
+public abstract class Item extends EntityCommon {
 
     @Id
     @GeneratedValue
