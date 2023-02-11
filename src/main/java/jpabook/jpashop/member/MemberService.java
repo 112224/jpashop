@@ -1,6 +1,6 @@
 package jpabook.jpashop.member;
 
-import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.member.Member;
 
 public interface MemberService {
     /**

@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.order;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook.jpashop.domain.item.Item;

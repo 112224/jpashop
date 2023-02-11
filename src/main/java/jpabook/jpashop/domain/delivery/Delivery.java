@@ -1,6 +1,8 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.delivery;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jpabook.jpashop.domain.member.Address;
+import jpabook.jpashop.domain.order.Order;
 import lombok.Getter;
 import lombok.Setter;
 

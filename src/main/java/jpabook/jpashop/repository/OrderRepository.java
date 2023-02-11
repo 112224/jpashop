@@ -2,9 +2,9 @@ package jpabook.jpashop.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.member.Member;
+import jpabook.jpashop.domain.order.Order;
+import jpabook.jpashop.domain.order.OrderStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
